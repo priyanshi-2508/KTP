@@ -8,5 +8,5 @@ import { Component, Input } from "@angular/core";
 
 export class ButtonComponent{
     @Input() title = ''
- name='Priyanshi'
+//  name='Priyanshi'
 }

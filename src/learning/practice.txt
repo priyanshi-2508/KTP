@@ -1,0 +1,243 @@
+component -> 3 parts
+1. template(view) - used to design UI using HTML.
+2. class (code) - supporting feature.. 
+3. metadata attached to component. -> information. It is defined using Decorator.
+
+App components -> app.component.ts -> it has class at bottom and contains property "title". Class is attached with a decorator named "Component decorator". it contais selector, templateUrl and styleUrls.
+ye decorator help krta hai normal class ko component se differentiate krdi..
+angular renders app.component.html when it finds app-root selector.
+
+new component command -> ng g c test
+creates test component and testComponent gets added in app.module.ts.
+ app component is the root component and will add more components in it.
+
+3 ways to specify selector -> 'app-test' , use it in div as class="app-test" , enclose selector in square bracket and use it now as attribute.
+1. <app-test><app-test>
+2. <div class="app-test"></div>
+3. <div app-test></div>
+
+templateUrl property can be also be used as template: `<div>Inline template</div>`
+we can have styles property
+styles:[`
+div{
+    background-color:black;
+}
+`]
+
+#################################################################
+
+Interpolation -> 
+2 components - app, test
+app has -> "FROM App Component"
+test has -> "Welcome Priyanshi"
+Now this name should have to be dynamic..
+
+so create a new property in class..in .ts file..
+public name="Priyanshi Khandelwal"
+and now in html write "Welcome {{name}}"
+this curly braces is k/a interpolation.
+**********This was the simplest way to bind data in between class and html.
+
+//Next
+<h2>{{2+2}}</h2> //it evalutes and sow 4
+<h2>{{"Welcome + {{name}}"}}</h2> //string concatenation..
+<h2>{{name.length}}</h2> //display length of name
+we can also use methods..
+for eg- create a method in class..
+greetUser(){
+    return "Hello" + this.name;
+}
+and call this method now.
+
+//what we can not do using interpolation -> 
+1. assignment of value in variable is not possible.
+2. access to global JS variables., url etc. basically you can't directly use (window.location.href)
+we can store it in class(by defining property) and can bind with html.
+
+#########################
+Property Binding
+**** Attributes and properties are not same.. It means Attributes are defined by HTML and 
+properties by DOM.
+Attribute value can not be changed once initialized.
+Property value can be changed.
+
+public myID = "testId" //property hai ye..
+
+in html -> <input [id]="myId" type="text" value="PK">
+this is property binding..
+
+<input id={{myId}} type="text" value="PK"> //interpolation - which works only with string
+//you can't set boolean attribute using interpolation.
+
+isDisabled = false; in .ts
+<input [disabled]="isDisabled " id={{myId}} type="text" value="PK"> // this will works correctly 
+
+we can also bind using bind-disabled or bind-id.
+
+
+###########
+Class Binding
+in template -> <h2 [class]="successClass" >I'm good</h2>
+<h2 class="text-danger" [class]="successClass">I'm happy</h2> //can't use both at a time..use only one
+<h2 [class.text-danger]="hasError">True</h2> //text is in red.
+
+//for multiple classes use - ng class directive
+<h2 [ngClass]="msgclass">Object</h2> //check by running this code.
+
+in styles ;[`
+.text-success{
+    color:green;
+}
+.text-danger{
+    color:red;
+}
+
+`]
+
+in class testComponent ->
+add property->
+public successClass = "text-success";
+public hasError=true;
+public isSpecial = true;
+public msgclass={
+    "text-success" : !this.hasError,
+    "text-danger" : this.hasError
+};
+
+
+###################
+Style Binding
+in html -> <h2 [style.color]= "'orange'">Style Binding</h2>
+or <h2 [style.color]="hasError? 'red':'green'>XYZ</h2>
+<h2 [style.color] = "newColor">ABC</h2>
+//we can also use ng directive for style binding of multiple class
+Keyword is [ngStyle]
+in ts->
+public newColor = "yellow";
+
+#####################
+Event Binding
+template se data flow hota h in class...
+
+in html->
+<button (click)="onClick($event)">Greet</button>
+{{greeting}}  //works on button click and is on browser because of interpolation..
+
+//by using $event, we get access to all the DOM events.
+ <button (click)="greeting = 'Welcome Guyzz'">hii</button>
+
+in ts-> 
+public greeting = "";
+onClick(eve){
+   // console.log("Welcome here!");
+   console.log(eve);
+   // this.greeting="Welcome PK";
+   this.greeting = eve.type;
+}
+
+
+#######################
+Template Refernce Variables- [imp to understand]
+template se ts m data flow ...
+
+in html -> <input #myInput type = "text">
+<button (click)="logMsg(myInput.value)">Log</button>
+
+in Ts -> 
+logMsg(value){
+    console.log(value);
+}
+
+
+############################
+Two Way Binding - 
+view has -> username and password
+and corresponding class has -> public username and public password
+
+class se html -> data binding and vice versa is event binding
+
+//ngModel diretive is there for Two way binding
+
+in html -> 
+<input [(ngModel)]="name type = "text"> {{name}}
+
+[] -> is for data binding 
+() -> for event binding
+//always add FormsModule in app.modeule.ts to use ngModel
+
+in ts -> 
+public name = ""
+
+#############################
+Structural Directives
+
+1. ngIf directive
+in html -> <h2 *ngIf="true">Hello</h2>
+<h2 *ngIf="false">Hello</h2> //will not be visible , it will be reoved from DOM itself..
+and it is diff from setting CSS property as display : none kyuki it will be there in DOM
+but not in this.
+<h2 *ngIf="displayName">XYZ</h2> //will be visible when displayName is true.
+
+in ts-> displayName = true;
+
+//else block for ngIf
+in html -> <h2 *ngIf = "displayName; else elseBlock">XYZ</h2>     //elseBlock is Refernce of else
+//else block
+<ng-template #elseBlock>
+<h2>ABC</h2>
+</ng-template>
+//value will be shown acc to value of displayName
+
+<div *ngIf="displayName; then thenBlock else elseBlock">
+<ng-template #thenBlock>         //if Block
+<h2>Yes</h2>
+</ng-template>
+
+<ng-template #elseBlock>        //else block
+<h2>Np</h2>
+</ng-template>
+</div>
+
+
+2. ngSwitch Directive
+
+in html ->
+<div [ngSwitch]="color">
+    <div *ngSwitchCase="'red'">Red</div>
+    <div *ngSwitchCase="'blue'">Blue</div>
+    <div *ngSwitchCase="'green'">Green</div>
+    <div *ngSwitchDefault>Choose again</div>
+</div>
+
+in ts -> public color = "red";
+
+//for output change value in ts..
+
+3. ngFor Directive
+
+
+
+
+<div *ngFor="let item of collections.data">
+ {{item | json}};
+</div>
+
+
+
+import { Component, Input } from "@angular/core";
+@Component({
+    selector : 'user-item',
+    template : `
+            <div>
+            <img [src]="item?.avatar" />    
+            <span>Name:  </span> {{item?.first_name}} {{item?.last_name}}
+
+            {{item?.fullName.?killCount}}
+            </div>
+    `,
+    styleUrls : []
+})
+
+export class  UserItemComponent {
+    @Input() item : any;
+}

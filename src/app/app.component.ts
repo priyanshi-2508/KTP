@@ -7,5 +7,10 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
 
+<<<<<<< HEAD
 @Input() name: string = "Hello JavaTpoint"; 
 }   
+=======
+
+}
+>>>>>>> 254ceac371dc0cdaaf35c990a1bc66b901997e50
