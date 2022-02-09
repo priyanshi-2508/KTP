@@ -18,8 +18,9 @@
   <app-search [searchbar]="'Type here to search'"></app-search>
 
   <div class="btnctn">
-  <app-button [title]="'Login'"></app-button>
-  <app-button [title]="'SignIn'"></app-button>
+  <app-button *ngIf="!isLoginTrue"  [title]="'Login'"></app-button>
+  <app-button (click)="logoutHandler()"  *ngIf="isLoginTrue" [title]="'LogOut'"></app-button>
+  <!-- <app-button [title]="'SignIn'"></app-button> -->
 </div>
 </div>
 
@@ -34,7 +35,7 @@
   <app-normal [n_name]="'Forgot Password ? '"></app-normal>
   <app-search [searchbar]="'Enter your password here'"></app-search>
 
-  <app-button [title]="'Login'"></app-button>
+  <app-button (click)="loginHandler()" [title]="'Login'"></app-button>
 </div>
 
 <!-- JSON Task -->

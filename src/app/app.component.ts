@@ -9,12 +9,29 @@ import container from '../learning/jsonData.json';
 })
 export class AppComponent {
 
+  /// if true, I am Logined in user
+  /// if False , I am not LoggedIn
+  isLoginTrue = false;
+
 @Input() name: string = "Hello JavaTpoint"; 
 
 response = element;
 a = this.response.rawMapping.Sleep.vkey;
 
 result = container;
+
+
+ 
+loginHandler() {
+      //API 
+      this.isLoginTrue =  true;
+}
+
+logoutHandler () {
+   // API
+   this.isLoginTrue =  false;
+}
+
 
 
 }   
