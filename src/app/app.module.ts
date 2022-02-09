@@ -4,16 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
+
 import { ButtonComponent } from './ui/buttonComponent/button.component';
-=======
-import { ButtonComponent } from './ui/button/button.component';
->>>>>>> 254ceac371dc0cdaaf35c990a1bc66b901997e50
+import { NormalComponent } from './ui/normalComponent/normal.component';
+import { SearchComponent } from './ui/searchComponent/search.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent
+    ButtonComponent,
+    SearchComponent,
+    NormalComponent
   ],
   imports: [
     BrowserModule,

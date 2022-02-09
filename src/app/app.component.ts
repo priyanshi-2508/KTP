@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import element from  '../learning/json_data.json';
+import container from '../learning/jsonData.json';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +9,12 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
 
-<<<<<<< HEAD
 @Input() name: string = "Hello JavaTpoint"; 
-}   
-=======
 
-}
->>>>>>> 254ceac371dc0cdaaf35c990a1bc66b901997e50
+response = element;
+a = this.response.rawMapping.Sleep.vkey;
+
+result = container;
+
+
+}   

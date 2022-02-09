@@ -1,3 +1,9 @@
 a{
     border: rgb(189, 96, 96);
 }
+.btnClass{
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 2px;
+    margin: 10px;
+}
