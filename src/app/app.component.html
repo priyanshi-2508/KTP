@@ -60,18 +60,23 @@
 
 
 <!-- </div> -->
+<form (submit)="onLoginclick()">
+  <label>Username</label>
+  <input [ngClass]="{ 'red': !userNameValid  }" (blur)="isFieldUsernameValid()" type="text" 
+  [(ngModel)]="userName" name="userName" />
+  <span style="color:red" 
+  *ngIf="!userNameValid">Username is Required</span>
+  
+  
+  <br>
+  <label>Password</label>
+  <input [ngClass]="{ 'red': !passwordValid }" 
+  (blur)="isFieldPasswordValid()" type="password" [(ngModel)]="password" name="password" />
+  <span style="color:red" *ngIf="!passwordValid">Password is Required</span>
+  
+  
+  <br>
+  <button type="submit">Login</button>
+</form>
 
-<label>Username</label>
-<input [ngClass]="{ 'red': !userNameValid  }" (blur)="isFieldUsernameValid()" type="text" [(ngModel)]="userName" name="userName" />
-<span style="color:red" *ngIf="!userNameValid">Username is Required</span>
 
-
-<br>
-<label>Password</label>
-<input [ngClass]="{ 'red': !passwordValid }" (blur)="isFieldPasswordValid()" type="password" [(ngModel)]="password" name="password" />
-<span style="color:red" *ngIf="!passwordValid">Password is Required</span>
-
-
-<br>
-
-<button (click)="onLoginclick()">Login</button>
