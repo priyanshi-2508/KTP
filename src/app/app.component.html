@@ -1,4 +1,4 @@
-<!-- 1. -->
+1.
 <!-- <app-button [title]="'Login'"></app-button> -->
 
 <!-- <p>Two-way binding example</p> -->
@@ -27,7 +27,7 @@
 
 <!-- Login Form -->
 
-<div class="form"  >
+<!-- <div class="form"  >
   <h5>Email Id - </h5>
   <app-search class="emailBox" style="width: 250px;" [searchbar]="'Enter your mail here'"></app-search>
 
@@ -36,7 +36,7 @@
   <app-search [searchbar]="'Enter your password here'"></app-search>
 
   <app-button (click)="loginHandler()" [title]="'Login'"></app-button>
-</div>
+</div> -->
 
 <!-- JSON Task -->
 
@@ -44,21 +44,34 @@
   <!-- <h1>{{response}}</h1> -->
   <!-- {{response | json}} -->
   <!-- {{response.layout | json}} -->
-  <div *ngFor="let i of response.rawMapping">
+  <!-- <div *ngFor="let i of response.rawMapping">
     {{i|json}}
-  </div>
+  </div> -->
 <!-- 
 {{response.rawMapping.Sleep | json}} -->
 
-{{a}}
+<!-- {{a}} -->
 
 
 <!-- jsonData -->
-<div *ngFor="let i of result.attributes[0].attributeValues">
+<!-- <div *ngFor="let i of result.attributes[0].attributeValues">
   {{i|json}}
-</div>
+</div> -->
 
 
-</div>
+<!-- </div> -->
 
-    
+<label>Username</label>
+<input [ngClass]="{ 'red': !userNameValid  }" (blur)="isFieldUsernameValid()" type="text" [(ngModel)]="userName" name="userName" />
+<span style="color:red" *ngIf="!userNameValid">Username is Required</span>
+
+
+<br>
+<label>Password</label>
+<input [ngClass]="{ 'red': !passwordValid }" (blur)="isFieldPasswordValid()" type="password" [(ngModel)]="password" name="password" />
+<span style="color:red" *ngIf="!passwordValid">Password is Required</span>
+
+
+<br>
+
+<button (click)="onLoginclick()">Login</button>

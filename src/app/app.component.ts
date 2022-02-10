@@ -9,6 +9,13 @@ import container from '../learning/jsonData.json';
 })
 export class AppComponent {
 
+
+  userName = '';
+  userNameValid = true
+  
+  password = '';
+  passwordValid =  true;
+
   /// if true, I am Logined in user
   /// if False , I am not LoggedIn
   isLoginTrue = false;
@@ -21,7 +28,26 @@ a = this.response.rawMapping.Sleep.vkey;
 result = container;
 
 
- 
+isFieldUsernameValid() {
+  this.userNameValid =  this.userName.length > 0;
+    return this.userNameValid;
+}
+
+isFieldPasswordValid() {
+   this.passwordValid = this.password.length > 0;
+   return this.passwordValid;
+}
+
+onLoginclick () {
+    if(this.isFieldUsernameValid() && this.isFieldPasswordValid()) {
+       // hit API
+      
+    }else {
+      return false;
+    }
+    return true;
+}
+
 loginHandler() {
       //API 
       this.isLoginTrue =  true;

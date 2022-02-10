@@ -33,3 +33,11 @@
 .emailBox{
     width:40px;
 }
+
+.red {
+    border-color: red;
+}
+
+.blue {
+    border-color: blue;
+}
