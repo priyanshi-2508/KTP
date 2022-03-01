@@ -1,0 +1,17 @@
+.header{
+    display: flex;
+    background-color:rgb(126, 37, 37);
+    color:white;
+}
+.left{
+    width:25%;
+    justify-content: left;
+}
+.right{
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    font-size:19px;
+    color: white;
+}

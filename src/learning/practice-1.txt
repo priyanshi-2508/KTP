@@ -1,0 +1,19 @@
+//ng For directive
+
+we render html 
+//in ts file
+public colors = ["red","blue","green","yellow"];
+
+//in html file
+<div *ngFor = "let color of colors; index as i">
+    <h2>{{i}} {{color}}</h2>
+</div>
+
+//Component Interaction
+sharing data from parent to child -> use @Input()
+and from child to parent -> use @Output()
+
+we will send name from app Component to testComponent and  in child component we will write "Hello Priyanshi".
+testComponent will return message  "Hey Codevolution" to the parent .
+
+agar koi value parent se lenge toh ham child m uske aage input decorator likh denge..

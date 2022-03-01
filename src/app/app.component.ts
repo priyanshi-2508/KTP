@@ -22,10 +22,10 @@ export class AppComponent {
 
 @Input() name: string = "Hello JavaTpoint"; 
 
-response = element;
-a = this.response.rawMapping.Sleep.vkey;
+//response = element;
+//a = this.response.rawMapping.Sleep.vkey;
 
-result = container;
+// result = container;
 
 
 isFieldUsernameValid() {

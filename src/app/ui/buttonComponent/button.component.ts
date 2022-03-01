@@ -7,11 +7,5 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 })
 
 export class ButtonComponent{
-    @Input() title = ''
-    @Output() click = new EventEmitter();
-
-    onClichHandler() {
-          this.click.emit();
-    }
-//  name='Priyanshi'
+    @Input() typeOfBtn='';
 }

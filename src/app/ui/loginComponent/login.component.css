@@ -1,0 +1,14 @@
+.login{
+    width:30%;
+    border:1px solid black;
+    padding: 20px;
+    margin-left:32%;
+    margin-top: 35px;
+    border-radius: 10px;
+}
+
+.loginBtn{
+    padding:10px;
+    text-align: center;
+    color: white;
+}

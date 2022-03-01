@@ -1,0 +1,28 @@
+<!-- UI of Login Component -->
+<div [hidden]="hideFormClass" class="login">
+    <form  (submit)="onLoginClick()">
+    <div class="username">
+        <label>Username</label>
+        <app-textbox (blur)="username.isValid()"
+            [nameOfBox]="username"  ></app-textbox> <br>
+            <span class="span_class" *ngIf="!username.isFieldValid">{{username.validationMsg}} </span>
+    </div>
+
+    <div class="password">
+        <label>Password</label>
+        <app-textbox  (blur)="password.isValid()" 
+             [ngClass]="{ 'text-danger': !password.isFieldValid }"
+             [nameOfBox]="password"></app-textbox> <br>
+
+            <span class="span_class" *ngIf="!password.isFieldValid">{{password.validationMsg}}</span>
+        </div> 
+
+    <div class="forgot_pass">
+        <a> Forgot Password ? </a>
+    </div>
+
+    <div class="loginBtn">
+        <app-button [typeOfBtn]="'submit'"> Login </app-button>
+    </div>
+    </form>
+</div>

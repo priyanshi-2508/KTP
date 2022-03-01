@@ -1,4 +1,29 @@
-1.
+<app-header></app-header>
+<!-- <app-showAllMeetups></app-showAllMeetups> -->
+<!-- <app-login></app-login> -->
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- <app-button [title]="'Login'"></app-button> -->
 
 <!-- <p>Two-way binding example</p> -->
@@ -7,7 +32,7 @@
 
 
 <!-- NavBar -->
-<div class="header">
+<!-- <div class="header">
 
   <div class="normalcnt">
   <app-normal [n_name]="'About'"></app-normal>
@@ -20,9 +45,9 @@
   <div class="btnctn">
   <app-button *ngIf="!isLoginTrue"  [title]="'Login'"></app-button>
   <app-button (click)="logoutHandler()"  *ngIf="isLoginTrue" [title]="'LogOut'"></app-button>
-  <!-- <app-button [title]="'SignIn'"></app-button> -->
+   <app-button [title]="'SignIn'"></app-button> 
 </div>
-</div>
+</div> -->
 
 
 <!-- Login Form -->
@@ -40,7 +65,7 @@
 
 <!-- JSON Task -->
 
-<div>
+<!-- <div> -->
   <!-- <h1>{{response}}</h1> -->
   <!-- {{response | json}} -->
   <!-- {{response.layout | json}} -->
@@ -60,10 +85,11 @@
 
 
 <!-- </div> -->
-<form (submit)="onLoginclick()">
+<!-- <form (submit)="onLoginclick()">
   <label>Username</label>
-  <input [ngClass]="{ 'red': !userNameValid  }" (blur)="isFieldUsernameValid()" type="text" 
-  [(ngModel)]="userName" name="userName" />
+  <input [ngClass]="{ 'red': !userNameValid  }"
+   (blur)="isFieldUsernameValid()" type="text" 
+  [(ngModel)]="userName" name="userName"  />
   <span style="color:red" 
   *ngIf="!userNameValid">Username is Required</span>
   
@@ -71,12 +97,15 @@
   <br>
   <label>Password</label>
   <input [ngClass]="{ 'red': !passwordValid }" 
-  (blur)="isFieldPasswordValid()" type="password" [(ngModel)]="password" name="password" />
+  (blur)="isFieldPasswordValid()" type="password" [(ngModel)]="password" name="password" [ngModelOptions]="{standalone: true}"] />
   <span style="color:red" *ngIf="!passwordValid">Password is Required</span>
   
   
   <br>
   <button type="submit">Login</button>
-</form>
+</form> -->
+
+
+
 
 
