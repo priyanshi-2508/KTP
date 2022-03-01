@@ -7,5 +7,18 @@ import { Component } from "@angular/core";
 })
 
 export class NewMeetUpComponent{
+ 
+    newMeetUp = {
+         title : '',
+         description : '',
+         address : '',
+         imageUrl : ''
+    }
+
     
+    submitHandler() {
+        console.log(this.newMeetUp);
+    }
+
+
 }

@@ -4,7 +4,27 @@ import { Subject } from "rxjs";
 @Injectable()
 export class LoginService{
     isLoggedIn = new Subject<boolean>();
-
     hideForm = new Subject<boolean>();
+    isUserLoggedIn: boolean = false;
+
+
+    setUserLoggedIn() {
+        this.isUserLoggedIn = true;
+        this.isLoggedIn.next(true);
+    }
+
+
+    setUserLogout() {
+          this.isUserLoggedIn = false;
+          this.isLoggedIn.next(false);
+    } 
+
+
+    isUserLogin() {
+         return this.isUserLoggedIn;
+    }
+
+
+
     
 }

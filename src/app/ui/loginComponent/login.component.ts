@@ -72,7 +72,7 @@ export class LoginComponent{
 
     onLoginClick(){
         if(this.username.isValid() && this.password.isValid()){
-            this._isLogin.isLoggedIn.next(true);
+            this._isLogin.setUserLoggedIn();
             this.hideFormClass=true;
         } else {
             this.hideFormClass = false;

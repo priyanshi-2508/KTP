@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -7,16 +7,23 @@ import { LoginService } from 'src/app/services/login.service';
     styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent{
+export class HeaderComponent implements OnInit{
 
     isLogin=false;
     constructor(private _isLogin : LoginService){
-        this._isLogin.isLoggedIn.subscribe((res:any)=>{
-            this.isLogin = res;
-        }) 
+         
+    }
+    ngOnInit(): void {
+            this._listnerToUserLogin()
+    }
+
+    private  _listnerToUserLogin() {
+            this._isLogin.isLoggedIn.subscribe((val) => {
+                    this.isLogin = val;
+            });
     }
 
     logoutHandler(){
-        this.isLogin = false;
+        this._isLogin.setUserLogout();
     }
 }

@@ -1,2 +1,14 @@
 
-<app-allmeetup [AllMeetUps]="data"></app-allmeetup>
+<div *ngIf="!loading">
+     <div *ngIf="data.length < 1">
+            <span>No Data</span>
+     </div>
+     <div *ngIf="data.length > 0">
+        <app-allmeetup [AllMeetUps]="data"></app-allmeetup>
+     </div>
+</div>
+
+<div *ngIf="loading">
+     Loading...
+</div>
+

@@ -4,6 +4,8 @@
         <h4>Title - {{singleItem.title}}</h4> 
         <p> Description - {{singleItem.description}} </p>
         <p> Address - {{singleItem.address}}</p>
-        <app-button>Add to favorites</app-button>
+        <app-button *ngIf="!checkIfFavorite()" (onClick)="AddtoFavorites()" >Add to favorites</app-button>
+        <app-button *ngIf="checkIfFavorite()" (onClick)="RemoveFromFavorite()" >Remove from favorites</app-button>
+
     </div>
 </div>

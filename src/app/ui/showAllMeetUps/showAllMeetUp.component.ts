@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class ShowAllMeetUpsComponent{
 
     data : any[] = [];
+    loading : boolean = false;
 
     constructor(private _http:HttpClient, private _TotalMeetUps : MeetupsService){
       
@@ -19,22 +20,16 @@ export class ShowAllMeetUpsComponent{
     }
 
     private _getAllMeetUps(){
+        this.loading = true;
         this._http.get('https://meetup-88c8c-default-rtdb.asia-southeast1.firebasedatabase.app/meetups.json').subscribe(
             (res : any) => {
-                // console.log(res);
+               this.loading = false;
                 for(let item in res){
-                    // console.log(item);
-                    this.data.push(res[item]);
-                    this._TotalMeetUps.collectionOfMeetUps.subscribe((res : any)=>{
-                        console.log(res);
-                    })
-
-                    // console.log(this.data);
+                res[item].id = item;
+                 this.data.push(res[item]);  
                 }
-                
-                // this.data = res;
-                // console.log(this.data);
-                // this._TotalMeetUps.collectionOfMeetUps.next(this.data);
+            },()=> {
+                 this.loading = false;
             }
         )
     }
