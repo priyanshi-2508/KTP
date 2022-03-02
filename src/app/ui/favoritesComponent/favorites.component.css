@@ -1,0 +1,26 @@
+.singleMeetUp{
+    border: 1px solid black;
+    /* font-size : 30px; */
+    width:40%;
+    margin:10px;
+    margin-left:100px;
+    align-self: center;
+}
+h4{
+    text-decoration: underline;
+}
+.top{
+    /* width:20px;
+    height : 50px; */
+    color:black
+}
+.imageOfSingleMeetup{
+    height:100px;
+    width: 100px;
+    align-items: center;
+}
+.bottom{
+ color:black;  
+ text-align: center;
+ /* background-color: blue;  */
+}

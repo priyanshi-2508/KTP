@@ -3,11 +3,11 @@
         <app-logo>MeetUps</app-logo>
     </div>
     <div class="right">
-        <app-normal><a href="/showAllMeet">All MeetUps</a></app-normal>
-        <app-normal><a href="/newMeetUp">New Meetup</a></app-normal>
-        <app-normal *ngIf="isLogin">Favorites</app-normal>
-        <app-normal *ngIf="!isLogin"><a href="/login">Login</a></app-normal>
-        <app-normal *ngIf="isLogin" (onClick)="logoutHandler()">Logout</app-normal>
+        <app-normal (click) = "handleAllMeetUps()">All MeetUps</app-normal>
+        <app-normal (click)="handleNewMeetUp()">New Meetup</app-normal>
+        <app-normal *ngIf="isLogin" (click)="handleFavPage()">Favorites</app-normal>
+        <app-normal *ngIf="!isLogin" (click)="handleLogin()">Login</app-normal>
+        <app-normal *ngIf="isLogin" (click)="logoutHandler()">Logout</app-normal>
     </div>
     
 

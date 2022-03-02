@@ -1,19 +1,20 @@
-<div class="newMeetUpForm">
-    <form (onsubmit)="submitHandler()">
-
-   
+<div [hidden]="hideFormClass" class="newMeetUpForm">
+    <form  (submit)="submitHandler()"> 
     <div class="top">   
         <label>MeetUp Title</label> <br>
-        <input [(ngModel)]="newMeetUp.title" class="inputBox" type="text" /> <br>
+        <input [(ngModel)]="newMeetUp.title" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br>
         <label>MeetUp Image URL </label> <br>
-        <input [(ngModel)]="newMeetUp.imageUrl" class="inputBox" type="text" />  <br>
+        <input [(ngModel)]="newMeetUp.imageUrl" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" />  <br>
         <label>Address</label> <br>
-        <input [(ngModel)]="newMeetUp.address" class="inputBox" type="text" /> <br> 
+        <input [(ngModel)]="newMeetUp.address" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br> 
         <label>Description</label><br>
-        <input [(ngModel)]="newMeetUp.description" class="inputBox" type="text" /> <br> 
+        <input [(ngModel)]="newMeetUp.description" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br> 
     </div>
     <div class="bottom">
         <app-button [typeOfBtn]="'submit'">Add MeetUp</app-button>
     </div>
 </form>
+</div>
+<div class="msg" *ngIf="meetUp">
+    {{showMsg}}
 </div>

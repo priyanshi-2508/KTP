@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
     selector:'app-normal',
@@ -8,5 +8,10 @@ import { Component, Input } from "@angular/core";
 
 export class NormalComponent{
     
+    @Output()  event = new EventEmitter();
+
+    onClickHandler(){
+        this.event.emit();
+    }
 }
 

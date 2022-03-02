@@ -1,0 +1,20 @@
+
+        <!-- Welcome to favorite page! -->
+
+<div *ngIf="collection.length == 0">
+    <h3>No Favorites. Please Add Some!!</h3>
+</div>
+
+<div *ngIf="collection.length>0">
+        <div class="singleMeetUp" *ngFor="let item of collection">
+            <div class="top">
+                <img class="imageOfSingleMeetup" [src] ="item.image" /> 
+                <h4>Title - {{item.title}}</h4> 
+                <p> Description - {{item.description}} </p>
+                <p> Address - {{item.address}}</p>
+            </div>
+            <div class="bottom">  
+                <app-button (click)="RemoveFromFavorite()">Remove from favorites</app-button> 
+            </div>
+        </div>
+</div>

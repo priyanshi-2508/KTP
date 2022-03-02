@@ -10,3 +10,4 @@ export * from './normalComponent/normal.component';
 export * from './searchComponent/search.component';
 export * from './textboxComponent/textbox.component';
 export * from './showAllMeetUps/showAllMeetUp.component';
+export * from './newMeetupComponent/newmeetup.component';

@@ -23,6 +23,7 @@ export class SingleMeetUpComponent{
         if(!this._login.isUserLogin()) {
                 this._router.navigateByUrl('/login')
         }else {
+            this._router.navigateByUrl('/favorite');
             this._meetUp.addToFavourites(this.singleItem); 
         }
         
@@ -33,6 +34,6 @@ export class SingleMeetUpComponent{
     }
 
     RemoveFromFavorite() {
-          this._meetUp.removeFromFavourited(this.singleItem);
+          this._meetUp.removeFromFavourites(this.singleItem);
     }
 }

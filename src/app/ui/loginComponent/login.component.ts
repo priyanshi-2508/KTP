@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoginService } from "src/app/services/login.service";
 
 @Component({
@@ -10,10 +12,16 @@ import { LoginService } from "src/app/services/login.service";
 export class LoginComponent{
  
     hideFormClass=false;
-    constructor(private _isLogin:LoginService,private _hideForm : LoginService){
+    userStatus=false;
+    errorMessage = '';
+    constructor(private _isLogin:LoginService,
+        private _hideForm : LoginService,
+        private _route : Router,
+        private _http : HttpClient 
+        ){
         this._isLogin.isLoggedIn.subscribe((res : any)=>{
             this._isLogin = res;
-            console.log(this._isLogin);
+            // console.log(this._isLogin);
             this._hideForm.hideForm.subscribe((res:any)=>{
                 this.hideFormClass = res;
             }) 
@@ -56,8 +64,8 @@ export class LoginComponent{
                     this.validationMsg = 'Password can not be empty';
                     this.isFieldValid = false;
                return false;    
-            } else if(this.value.trim().length>8){
-                this.validationMsg = 'Password should be less than or equal to 8 letters';
+            } else if(this.value.trim().length>15){
+                this.validationMsg = 'Password should be less than or equal to 15 letters';
                 this.isFieldValid = false;
                 return false;
             }
@@ -71,9 +79,29 @@ export class LoginComponent{
     }
 
     onLoginClick(){
-        if(this.username.isValid() && this.password.isValid()){
-            this._isLogin.setUserLoggedIn();
-            this.hideFormClass=true;
+        if(this.username.isValid() && this.password.isValid())
+        {
+
+            this._http.post('https://reqres.in/api/login',{
+                "email": this.username.value,
+                "password": this.password.value
+            }).subscribe( 
+                (response:any)=>{
+                    this.errorMessage = '';
+                    
+                    this._isLogin.setUserLoggedIn();
+                   this._route.navigateByUrl('/showAllMeet');
+                   this.hideFormClass=true;
+                   
+                }, 
+                (err)=>{
+                    this.errorMessage = err.error.error;
+                }  
+            )
+
+            // this._isLogin.setUserLoggedIn();
+            // this._route.navigateByUrl('/showAllMeet');
+            // this.hideFormClass=true;
         } else {
             this.hideFormClass = false;
         }

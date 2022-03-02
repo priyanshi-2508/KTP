@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AllMeetUpComponent, HeaderComponent, LoginComponent, NewMeetUpComponent, ShowAllMeetUpsComponent } from './ui';
+import { AllMeetUpComponent, FavoriteComponent, HeaderComponent, LoginComponent, NewMeetUpComponent, ShowAllMeetUpsComponent } from './ui';
 
 const routes: Routes = [
   {
@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path:'newMeetUp',
     component : NewMeetUpComponent
+  },
+  {
+    path : 'favorite',
+    component:FavoriteComponent
   }
 ];
 

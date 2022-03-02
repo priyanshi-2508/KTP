@@ -18,3 +18,11 @@
 .inputBox{
     width: 100%;
 }
+
+.msg{
+    text-align: center;
+    color:red;
+    background-color: black;
+    border: 1px solid black;
+    font-size: 30px;
+}

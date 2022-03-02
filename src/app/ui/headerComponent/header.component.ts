@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { LoginService } from 'src/app/services/login.service';
 export class HeaderComponent implements OnInit{
 
     isLogin=false;
-    constructor(private _isLogin : LoginService){
+    constructor(private _isLogin : LoginService ,
+        private _router : Router){
          
     }
     ngOnInit(): void {
@@ -25,5 +27,23 @@ export class HeaderComponent implements OnInit{
 
     logoutHandler(){
         this._isLogin.setUserLogout();
+        this._router.navigateByUrl('/login');
+    }
+
+    handleLogin(){
+        this._router.navigateByUrl('/login');
+    }
+
+    handleNewMeetUp(){
+        console.log("Hiii");
+        this._router.navigateByUrl('/newMeetUp');
+    }
+
+    handleAllMeetUps(){
+        this._router.navigateByUrl('/showAllMeet');
+    }
+
+    handleFavPage(){
+        this._router.navigateByUrl('/favorite');
     }
 }
