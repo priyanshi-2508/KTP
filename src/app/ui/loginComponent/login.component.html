@@ -17,12 +17,12 @@
             <span class="span_class" *ngIf="!password.isFieldValid">{{password.validationMsg}}</span>
         </div> 
 
-    <div class="forgot_pass">
+    <!-- <div class="forgot_pass">
         <a> Forgot Password ? </a>
-    </div>
+    </div> -->
 
     <div class="loginBtn">
-        <app-button [typeOfBtn]="'submit'"> Login </app-button>
+        <app-button [isDisabled]="loading" [typeOfBtn]="'submit'"> Login </app-button>
     </div>
     </form>
 </div>

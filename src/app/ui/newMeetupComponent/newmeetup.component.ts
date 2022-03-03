@@ -18,6 +18,7 @@ export class NewMeetUpComponent{
          private _http:HttpClient){
 
     }
+
     meetUp = false;
     hideFormClass=false;
     showMsg = 'MeetUp Added Successfully!!';
@@ -27,23 +28,42 @@ export class NewMeetUpComponent{
          address : '',
          imageUrl : ''
     }
-
+    loading = false;
    
+    ngOnInit(){
+        if(!this._isLogin.isUserLogin()){
+            this._router.navigateByUrl('/login');
+        } 
+        
+    }
+
     submitHandler() {
         console.log(this.newMeetUp);
         if(!this._isLogin.isUserLogin()) {
-            this._router.navigateByUrl('/login')
+            // this._router.navigateByUrl('/login')
         } else {
+           
             this.addNewItemToAPI(this.newMeetUp); 
-            this.hideFormClass=true;
+           
+            // this.hideFormClass=true;
             this.meetUp = true;
         }
     }
 
     addNewItemToAPI(newItem : any){
-        this._http.post('https://meetup-88c8c-default-rtdb.asia-southeast1.firebasedatabase.app/meetups.json',newItem).subscribe((res)=>{
-            console.log(res);
-        })
+        this.loading = true;
+        this._http.post('https://meetup-88c8c-default-rtdb.asia-southeast1.firebasedatabase.app/meetups.json',newItem)
+        .subscribe(
+            (res)=>{
+            console.log(res);  
+            this.loading = false;
+        },
+        (err)=>{
+            this.loading=false;
+        }
+        )
+
+         
     }
 
 

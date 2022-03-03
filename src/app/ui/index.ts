@@ -11,3 +11,4 @@ export * from './searchComponent/search.component';
 export * from './textboxComponent/textbox.component';
 export * from './showAllMeetUps/showAllMeetUp.component';
 export * from './newMeetupComponent/newmeetup.component';
+export * from './individualMeeting/individual.component';

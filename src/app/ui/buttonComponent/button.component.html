@@ -1,4 +1,4 @@
-<button [type]="typeOfBtn" (click)="clickHandler()"><ng-content></ng-content></button>
+<button  [type]="typeOfBtn" [disabled]="isDisabled" (click)="clickHandler()"><ng-content></ng-content></button>
 <!-- 
 <input type="text" [(ngModel)]="name" />
 <h3>{{name}}</h3> -->

@@ -14,6 +14,7 @@ export class LoginComponent{
     hideFormClass=false;
     userStatus=false;
     errorMessage = '';
+    
     constructor(private _isLogin:LoginService,
         private _hideForm : LoginService,
         private _route : Router,
@@ -29,7 +30,7 @@ export class LoginComponent{
         })
        
     }
-
+    loading:boolean = false;
 
     username = {
         name:'username',
@@ -81,20 +82,21 @@ export class LoginComponent{
     onLoginClick(){
         if(this.username.isValid() && this.password.isValid())
         {
-
+            this.loading=true;
             this._http.post('https://reqres.in/api/login',{
                 "email": this.username.value,
                 "password": this.password.value
             }).subscribe( 
                 (response:any)=>{
                     this.errorMessage = '';
-                    
+                    this.loading = false;
                     this._isLogin.setUserLoggedIn();
                    this._route.navigateByUrl('/showAllMeet');
                    this.hideFormClass=true;
                    
                 }, 
                 (err)=>{
+                    this.loading = false;
                     this.errorMessage = err.error.error;
                 }  
             )

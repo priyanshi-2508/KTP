@@ -2,16 +2,16 @@
     <form  (submit)="submitHandler()"> 
     <div class="top">   
         <label>MeetUp Title</label> <br>
-        <input [(ngModel)]="newMeetUp.title" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br>
+        <input [(ngModel)]="newMeetUp.title" [required]="true" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br>
         <label>MeetUp Image URL </label> <br>
-        <input [(ngModel)]="newMeetUp.imageUrl" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" />  <br>
+        <input [(ngModel)]="newMeetUp.imageUrl" [required]="true" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" />  <br>
         <label>Address</label> <br>
-        <input [(ngModel)]="newMeetUp.address" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br> 
+        <input [(ngModel)]="newMeetUp.address" [required]="true" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br> 
         <label>Description</label><br>
-        <input [(ngModel)]="newMeetUp.description" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br> 
+        <input [(ngModel)]="newMeetUp.description" [required]="true" [ngModelOptions]="{standalone: true}" class="inputBox" type="text" /> <br> 
     </div>
     <div class="bottom">
-        <app-button [typeOfBtn]="'submit'">Add MeetUp</app-button>
+        <app-button [isDisabled]="loading" [typeOfBtn]="'submit'">Add MeetUp</app-button>
     </div>
 </form>
 </div>

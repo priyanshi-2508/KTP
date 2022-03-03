@@ -1,6 +1,6 @@
 import { AppComponent } from "./app.component";
 import { ButtonComponent,SearchComponent,NormalComponent,HeaderComponent,LoginComponent,LogoComponent,AllMeetUpComponent,
-NewMeetUpComponent,FavoriteComponent,TextBoxComponent,SingleMeetUpComponent,ShowAllMeetUpsComponent } from "./ui";
+NewMeetUpComponent,FavoriteComponent,TextBoxComponent,SingleMeetUpComponent,ShowAllMeetUpsComponent, IndividualComponent } from "./ui";
 
 export const Components = [
     AppComponent,
@@ -15,7 +15,8 @@ export const Components = [
     LoginComponent,
     TextBoxComponent,
     SingleMeetUpComponent,
-    ShowAllMeetUpsComponent
+    ShowAllMeetUpsComponent,
+    IndividualComponent
 ]
 
 export const bootstap = [AppComponent];

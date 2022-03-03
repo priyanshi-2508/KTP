@@ -36,4 +36,11 @@ export class SingleMeetUpComponent{
     RemoveFromFavorite() {
           this._meetUp.removeFromFavourites(this.singleItem);
     }
+
+    titleHandler(){
+        let id = this.singleItem.id;
+        id = id.substring(1);
+       this._meetUp.getItem(this.singleItem);
+        this._router.navigateByUrl('showAllMeet/'+id);
+    }
 }

@@ -1,7 +1,7 @@
 <div class="singleMeetUp">
     <div class="top">
         <img class="imageOfSingleMeetup" [src] ="singleItem.image" />
-        <h4>Title - {{singleItem.title}}</h4> 
+        <h4 (click)="titleHandler()">Title - {{singleItem.title}}</h4> 
         <p> Description - {{singleItem.description}} </p>
         <p> Address - {{singleItem.address}}</p>
         <app-button *ngIf="!checkIfFavorite()" (onClick)="AddtoFavorites()" >Add to favorites</app-button>

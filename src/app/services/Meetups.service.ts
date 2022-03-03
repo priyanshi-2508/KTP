@@ -8,12 +8,23 @@ export class MeetupsService{
 
     collection: any[] = [];
     collectionFav : any[]=[];
+    uniqueitem :any;
     addToFavourites(itemToAdd: any) {
         if(!this.collection.some(item => item.id === itemToAdd.id)) {
                 this.collectionFav.push(itemToAdd); 
                 // console.log(this.collectionFav);
         }
     }
+    // show Individual Meeting
+    getItem(item:any){
+         this.uniqueitem = item;
+     }
+    showIndividualMeeting(){
+        // uniqueItem.id = this.setId;
+        return this.uniqueitem;
+    }
+
+
     showAllFav(){
         return this.collectionFav;
     }
@@ -34,13 +45,10 @@ export class MeetupsService{
     checkIfExist(itemToAdd: any) {
       return  this.collectionFav.some(item => item.id === itemToAdd.id)
     }
-
     getAllCollections() {
          return this.collection;
     }
-
-    addNewMeetUp(itemToAdd : any){
-        
+    addNewMeetUp(itemToAdd : any){      
         this.collection.push(itemToAdd);
         console.log(this.collection);
     }
